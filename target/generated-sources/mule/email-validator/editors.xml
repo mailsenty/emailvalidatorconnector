@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<namespace xmlns="http://www.mulesoft.org/schema/mule/tooling.attributes" xmlns:mule="http://www.mulesoft.org/schema/mule/core" url="http://www.mulesoft.org/schema/mule/email-validator" prefix="email-validator">
+  <global-cloud-connector versions="[3.5.0,8.0.0]" caption="EmailValidator" description="" icon="" localId="parentConfig" image="" abstract="true" extends="http://www.mulesoft.org/schema/mule/email-validator/abstractEmail-validatorConnectorGeneric"></global-cloud-connector>
+  <global-cloud-connector versions="[3.5.0,8.0.0]" caption="EmailValidator: Configuration" description="Global Configuration configuration information." icon="icons/theme.classic/email-validator-connector-small.png" localId="config" image="icons/theme.classic/email-validator-connector-large.png" abstract="false" extends="http://www.mulesoft.org/schema/mule/email-validator/parentConfig" connectivityTesting="off" metaData="static" metaDataKeyDisplay="DISPLAY_NAME" supportsUserDefinedMetaData="false">
+    <attribute-category caption="General" description="Email-validator configuration properties.">
+      <group id="email-validatorGenericProperties" caption="Basic Settings">
+        <name name="name" caption="Name" description="Give a name to this configuration so it can be later referenced by config-ref." required="true"></name>
+      </group>
+      <group id="general" caption="General">
+        <string defaultValue="Hello" name="greeting" caption="Greeting" description="Greeting message." supportsExpressions="false" required="false" javaType="java.lang.String"></string>
+        <string defaultValue="How are you?" name="reply" caption="Reply" description="Reply message." supportsExpressions="false" required="false" javaType="java.lang.String"></string>
+      </group>
+    </attribute-category>
+  </global-cloud-connector>
+  <cloud-connector caption="Abstractemail-validatorconnectorgeneric" description="Interact with Email-validator." icon="icons/theme.classic/email-validator-connector-small.png" localId="abstractEmail-validatorConnectorGeneric" image="icons/theme.classic/email-validator-connector-large.png" abstract="true">
+    <attribute-category caption="General" description="General.">
+      <group id="abstractEmail-validatorConnectorGeneric" caption="Basic Settings">
+        <globalRef requiredType="http://www.mulesoft.org/schema/mule/email-validator/config" name="config-ref" caption="Connector Configuration" description="Specify which configuration to use for this invocation." required="true"></globalRef>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector versions="[3.5.0,8.0.0]" aliasId="org.mule.tooling.ui.modules.core.pattern.email-validator" caption="EmailValidator" description="" icon="icons/theme.classic/email-validator-connector-small.png" localId="email-validator-connector" image="icons/theme.classic/email-validator-connector-large.png" extends="http://www.mulesoft.org/schema/mule/email-validator/abstractEmail-validatorConnectorGeneric">
+    <attribute-category caption="General" description="General.">
+      <group id="email-validatorConnectorGeneric" caption="Basic Settings">
+        <modeSwitch alwaysCombo="true" name="Email-validator operations to execute" caption="Operation" description="Operation.">
+          <no-operation abstractElement="http://www.mulesoft.org/schema/mule/email-validator/abstractEmail-validatorConnectorGeneric" versions="[3.5.0,8.0.0]" connector-name="processor"></no-operation>
+          <mode modeId="http://www.mulesoft.org/schema/mule/email-validator/validate-email-id" modeLabel="Validate email id"></mode>
+        </modeSwitch>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.lang.String" caption="Validate Email Id" icon="icons/theme.classic/email-validator-connector-small.png" localId="validate-email-id" image="icons/theme.classic/email-validator-connector-large.png" abstract="true" extends="http://www.mulesoft.org/schema/mule/email-validator/abstractEmail-validatorConnectorGeneric" metaData="static">
+    <attribute-category caption="General" description="General.">
+      <group id="general" caption="General">
+        <string name="emailId" caption="Email Id" description="" required="true" javaType="java.lang.String"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+</namespace>
